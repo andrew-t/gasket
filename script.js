@@ -1,6 +1,6 @@
 var n = 2000,
 	distance = 0.5,
-	points = [ { x: 50, y: 10 }, { x: 25, y: 90 }, { x: 75, y: 90 } ],
+	points = [ { x: 50, y: 20 }, { x: 25, y: 80 }, { x: 75, y: 80 } ],
 	//points = [ { x: 10, y: 10 }, { x: 10, y: 90 }, { x: 90, y: 10 }, { x: 90, y: 90 } ],
 	dots = [],
 	field;
@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 		field.appendChild(el);
 		dots[i] = {
 			element: el,
-			x: Math.random() * 100,
-			y: Math.random() * 100
+			x: random() * 100,
+			y: random() * 100
 		};
 	}
 	points.forEach(function(point) {
@@ -44,4 +44,9 @@ function position(dot) {
 
 function pick(arr) {
 	return arr[~~(Math.random() * arr.length)];
+}
+
+function random() {
+	return Math.random() * Math.random() *
+			((Math.random() >= 0.5) - 0.5) + 0.5;
 }
