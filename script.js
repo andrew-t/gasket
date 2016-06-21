@@ -1,5 +1,7 @@
 var n = 2000,
+	distance = 0.5,
 	points = [ { x: 50, y: 10 }, { x: 25, y: 90 }, { x: 75, y: 90 } ],
+	//points = [ { x: 10, y: 10 }, { x: 10, y: 90 }, { x: 90, y: 10 }, { x: 90, y: 90 } ],
 	dots = [],
 	field;
 
@@ -15,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
 			y: Math.random() * 100
 		};
 	}
+	points.forEach(function(point) {
+		point.element = document.createElement('div');
+		point.element.classList.add('point');
+		field.appendChild(point.element);
+		position(point);
+	});
 	step();
 	field.addEventListener('click', step);
 });
@@ -24,9 +32,14 @@ function step() {
 		dot.element.style.left = dot.x + '%';
 		dot.element.style.top = dot.y + '%';
 		point = pick(points);
-		dot.x = (dot.x + point.x) * 0.5;
-		dot.y = (dot.y + point.y) * 0.5;
+		dot.x = dot.x * (1 - distance) + point.x * distance;
+		dot.y = dot.y * (1 - distance) + point.y * distance;
 	});
+}
+
+function position(dot) {
+	dot.element.style.left = dot.x + '%';
+	dot.element.style.top = dot.y + '%';
 }
 
 function pick(arr) {

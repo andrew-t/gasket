@@ -6,11 +6,38 @@
 	top: calc(50vh - 50vmin);
 }
 
-.dot {
+#field > * {
 	position: absolute;
+}
+#field > *:after {
+	position: relative;
+	content: ' ';
+	font-size: 0;
+	border-radius: 100vmax;
+	display: block;
+}
+
+.dot {
+	width: 5px;
+	height: 5px;
+	transition: all 2s;
+}
+.dot:after {
 	background: black;
 	width: 5px;
 	height: 5px;
-	border-radius: 2.5px;
-	transition: all 2s;
+	left: -2.5px;
+	top: -2.5px;
+}
+.point {
+	width: 5px;
+	height: 5px;
+}
+.point:after {
+	width: 10px;
+	height: 10px;
+	border-radius: 25px;
+	border: 5px solid red;
+	left: -10px;
+	top: -10px;
 }
