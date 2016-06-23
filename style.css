@@ -20,14 +20,13 @@
 .dot {
 	width: 5px;
 	height: 5px;
-	transition: all 2s;
+	transition: left 2s, top 2s;
 }
 .dot:after {
 	background: black;
 	width: 5px;
 	height: 5px;
-	left: -2.5px;
-	top: -2.5px;
+	transition: background 1s;
 }
 .point {
 	width: 5px;
@@ -41,3 +40,10 @@
 	left: -10px;
 	top: -10px;
 }
+
+.dot.p0:after   { background:   red; }
+.dot.p1:after   { background:   green; }
+.dot.p2:after   { background:   blue; }
+.point.p0:after { border-color: red; }
+.point.p1:after { border-color: green; }
+.point.p2:after { border-color: blue; }
