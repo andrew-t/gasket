@@ -32,17 +32,21 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 function step() {
 	dots.forEach(function(dot) {
-		var i = ~~(Math.random() * points.length);
-		dot.element.classList.add('p' + i);
-		setTimeout(function() {
-			dot.x = dot.x * (1 - distance) + points[i].x * distance;
-			dot.y = dot.y * (1 - distance) + points[i].y * distance;
-			position(dot);
-		}, moveTimeout);
-		setTimeout(function() {
-			dot.element.classList.remove('p' + i);
-		}, moveTimeout + moveLength);
+		dot.i = ~~(Math.random() * points.length);
+		dot.element.classList.add('p' + dot.i);
 	});
+	setTimeout(function() {
+		dots.forEach(function(dot) {
+			dot.x = dot.x * (1 - distance) + points[dot.i].x * distance;
+			dot.y = dot.y * (1 - distance) + points[dot.i].y * distance;
+			position(dot);
+		});
+	}, moveTimeout);
+	setTimeout(function() {
+		dots.forEach(function(dot) {
+			dot.element.classList.remove('p' + dot.i);
+		});
+	}, moveTimeout + moveLength);
 }
 
 function position(dot) {
